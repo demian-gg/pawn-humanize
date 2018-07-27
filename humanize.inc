@@ -3,8 +3,10 @@
 #endif
 #define _humanize_included
 
-// HumanizeComma takes in an integer and returns a string containing
-// the number provided with commas put in.
+// HumanizeComma takes in an integer and passes the result to dest[]
+// by reference.
+//
+// The result contains the number provided with commas put in.
 //
 // Example :
 // 0 -> 0
@@ -13,20 +15,21 @@
 // 1000000 -> 1,000,000
 // -100000 -> -100,000
 //
-stock HumanizeComma(integer) {
-	new string[14], cursor;
+stock HumanizeComma(integer, dest[], maxLength = sizeof dest) {
+	new string[14 + 1], cursor;
 
 	valstr(string, integer);
 
 	cursor = strlen(string) - 3;
 	while(cursor > 0) {
         // If the character in front of the cursor is not a minus.
-        if(string[cursor - 1] != 0x2D) {
+        if(string[cursor - 1] != '-') {
             strins(string, ",", cursor);
         }
 
 		cursor -= 3;
 	}
 
-	return string;
+	dest[0] = EOS;
+	strcat(dest, string, maxLength);
 }
