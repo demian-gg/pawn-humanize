@@ -16,20 +16,20 @@
 // -100000 -> -100,000
 //
 stock HumanizeComma(integer, dest[], maxLength = sizeof dest) {
-	new string[14 + 1], cursor;
+    new string[14 + 1], cursor;
 
-	valstr(string, integer);
+    valstr(string, integer);
 
-	cursor = strlen(string) - 3;
-	while(cursor > 0) {
+    cursor = strlen(string) - 3;
+    while(cursor > 0) {
         // If the character in front of the cursor is not a minus.
         if(string[cursor - 1] != '-') {
             strins(string, ",", cursor);
         }
 
-		cursor -= 3;
-	}
+        cursor -= 3;
+    }
 
-	dest[0] = EOS;
-	strcat(dest, string, maxLength);
+    dest[0] = EOS;
+    strcat(dest, string, maxLength);
 }
