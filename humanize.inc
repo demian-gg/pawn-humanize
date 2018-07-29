@@ -196,3 +196,29 @@ stock HumanizeComma(integer, dest[], maxLength = sizeof dest)
     dest[0] = EOS;
     strcat(dest, string, maxLength);
 }
+
+// HumanizeOrdinal takes in a number and turns it into a rank/ordinal
+// format, then passes that over to dest by reference.
+//
+// Example :
+// 0 -> 0th
+// 1 -> 1st
+// 2 -> 2nd
+// 3 -> 3rd
+// 4 -> 4th
+//
+stock HumanizeOrdinal(number, dest[], maxLength = sizeof dest) {
+    new string[500];
+
+    valstr(string, number);
+    switch(number)
+    {
+        case 1 : strcat(string, "st");
+        case 2 : strcat(string, "nd");
+        case 3 : strcat(string, "rd");
+        default : strcat(string, "th");
+    }
+
+    dest[0] = EOS;
+    strcat(dest, string, maxLength);
+}

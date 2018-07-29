@@ -21,6 +21,20 @@ main() {
     HumanizeColor(0xA86420FF, color); // "Chocolate Brown"
     print(color);
 
-    HumanizeColor(0x42f44eFF, color); // "Lime Green"
+    HumanizeColor(0x42F44EFF, color); // "Lime Green"
     print(color);
+
+    HumanizeColor(0x137A8EFF, color); // "Teal"
+    print(color);
+
+    // ---
+    // Ordinals
+    // ---
+    new ordinal[32];
+
+    for(new i = 0; i < 5; i++)
+    {
+        HumanizeOrdinal(i + 1, ordinal);
+        printf("You got %s place!", ordinal);
+    }
 }
