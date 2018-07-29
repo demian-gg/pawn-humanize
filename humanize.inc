@@ -7,7 +7,7 @@
 // Declarations
 // ---
 
-enum E_COLOR_DATA
+static enum E_COLOR_DATA
 {
     COLOR_DATA_NAME[32],
     COLOR_DATA_R,
@@ -16,7 +16,7 @@ enum E_COLOR_DATA
 };
 
 // ColorData is a list of colors used by the HumanizeColor function.
-new colorData[][E_COLOR_DATA] =
+static colorData[][E_COLOR_DATA] =
 {
     {
         "Indian Red",
@@ -80,7 +80,7 @@ new colorData[][E_COLOR_DATA] =
     },
     {
         "Magenta",
-        255, 0, 255 
+        255, 0, 255
     },
     {
         "Purple",
@@ -441,30 +441,27 @@ stock HumanizeColor(color, dest[], maxLength = sizeof dest)
         g = (color >> 4*4) & 0xFF,
         b = (color >> 2*4) & 0xFF;
 
-    new nearest, Float:distance = 1000.0;
+    new nearest, Float:distance = Float:0x7F800000, Float:temp;
     for(new i = 0; i < sizeof(colorData); i++)
     {
-        new Float:temp = floatsqroot(
-            floatpower(colorData[i][COLOR_DATA_R] - r, 2) +
-            floatpower(colorData[i][COLOR_DATA_G] - g, 2) +
-            floatpower(colorData[i][COLOR_DATA_B] - b, 2)
-        );
+        temp = VectorSize(colorData[i][COLOR_DATA_R] - r, colorData[i][COLOR_DATA_G] - g, colorData[i][COLOR_DATA_B] - b);
 
-        if(temp < distance)
-        {
-            distance = temp;
-            nearest = i;
-        }
-        else if(temp == 0.0)
+        if(temp == 0.0)
         {
             nearest = i;
             break;
+        }
+        else if(temp < distance)
+        {
+            distance = temp;
+            nearest = i;
         }
     }
 
     dest[0] = EOS;
     strcat(dest, colorData[nearest][COLOR_DATA_NAME], maxLength);
 }
+#define HumanizeColour HumanizeColor
 
 // HumanizeComma takes in an integer and passes the result to dest[]
 // by reference.
