@@ -13,4 +13,14 @@ main() {
         HumanizeComma(numbers[i], result);
         print(result);
     }
+
+    // ---
+    // Colors
+    // ---
+    new color[32];
+    HumanizeColor(0xA86420FF, color); // "Chocolate Brown"
+    print(color);
+
+    HumanizeColor(0x42f44eFF, color); // "Lime Green"
+    print(color);
 }
