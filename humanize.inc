@@ -15,15 +15,17 @@
 // 1000000 -> 1,000,000
 // -100000 -> -100,000
 //
-stock HumanizeComma(integer, dest[], maxLength = sizeof dest) {
+stock HumanizeComma(integer, dest[], maxLength = sizeof dest)
+{
     new string[14 + 1], cursor;
 
     valstr(string, integer);
 
     cursor = strlen(string) - 3;
-    while(cursor > 0) {
-        // If the character in front of the cursor is not a minus.
-        if(string[cursor - 1] != '-') {
+    while(cursor > 0)
+    {
+        if(string[cursor - 1] != '-')
+        {
             strins(string, ",", cursor);
         }
 
