@@ -207,7 +207,8 @@ stock HumanizeComma(integer, dest[], maxLength = sizeof dest)
 // 3 -> 3rd
 // 4 -> 4th
 //
-stock HumanizeOrdinal(number, dest[], maxLength = sizeof dest) {
+stock HumanizeOrdinal(number, dest[], maxLength = sizeof dest)
+{
     new string[500];
 
     valstr(string, number);
