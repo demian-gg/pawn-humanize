@@ -16,7 +16,7 @@ static enum E_COLOR_DATA
 };
 
 // ColorData is a list of colors used by the HumanizeColor function.
-static colorData[][E_COLOR_DATA] =
+static const colorData[][E_COLOR_DATA] =
 {
     {"Indian Red", 176, 23, 31},
     {"Crimson", 220, 20, 60},
@@ -203,6 +203,9 @@ stock HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = "
 // HumanizeOrdinal takes in a number and turns it into a rank/ordinal
 // format, then passes that over to dest by reference.
 //
+// Returns 1 if everything went well, and 0 if the number specified is
+// negative.
+//
 // Example :
 // 0 -> 0th
 // 1 -> 1st
@@ -212,21 +215,29 @@ stock HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = "
 //
 stock HumanizeOrdinal(number, dest[], maxLength = sizeof dest)
 {
+    dest[0] = EOS;
+
     valstr(dest, number);
-    if(number < 0) return;
+    if(number < 0)
+    {
+        return 0;
+    }
     
     number %= 100;
-    
     if(11 <= number <= 13)
-    	 strcat(dest,"th",maxLength);
+    {
+        strcat(dest,"th",maxLength);
+    }
     else
-    {	
-	    switch(number % 10)
-	    {
-	        case 1 : strcat(dest, "st",maxLength);
-	        case 2 : strcat(dest, "nd",maxLength);
-	        case 3 : strcat(dest, "rd",maxLength);
-	        default : strcat(dest, "th",maxLength);
-	    }
-	}
+    {   
+        switch(number % 10)
+        {
+            case 1 : strcat(dest, "st",maxLength);
+            case 2 : strcat(dest, "nd",maxLength);
+            case 3 : strcat(dest, "rd",maxLength);
+            default : strcat(dest, "th",maxLength);
+        }
+    }
+
+    return 1;
 }
