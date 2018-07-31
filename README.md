@@ -17,7 +17,7 @@ Include in your code and begin using the library:
 
 # Features
 
-## Commas
+## Thousands Seperators
 ```
 0 -> 0
 100 -> 100
@@ -26,7 +26,7 @@ Include in your code and begin using the library:
 -100000 -> -100,000
 ```
 ```C
-HumanizeComma(integer, dest[], maxLength = sizeof dest)
+HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = ",")
 ```
 
 ## Colors

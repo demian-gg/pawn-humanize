@@ -177,7 +177,7 @@ stock HumanizeColor(color, dest[], maxLength = sizeof dest)
 // 1000000 -> 1,000,000
 // -100000 -> -100,000
 //
-stock HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter = ",")
+stock HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = ",")
 {
     new string[14 + 1], cursor;
 

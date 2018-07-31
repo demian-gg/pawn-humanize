@@ -2,7 +2,7 @@
 
 main() {
     // ---
-    // Commas
+    // Thousands Seperator
     // ---
     new numbers[] = {
         10, 100, 1000, 10000, 100000, 1000000, -100000
@@ -10,7 +10,14 @@ main() {
 
     new result[14 + 1];
     for(new i = 0; i < sizeof(numbers); i++){
-        HumanizeComma(numbers[i], result);
+        HumanizeThousand(numbers[i], result);
+        print(result);
+    }
+
+    // You can change the delimiter. By default, the delimiter
+    // is a comma.
+    for(new i = 0; i < sizeof(numbers); i++){
+        HumanizeThousand(numbers[i], result, sizeof(result), ".");
         print(result);
     }
 
