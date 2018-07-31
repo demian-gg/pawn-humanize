@@ -121,6 +121,32 @@ static const colorData[][E_COLOR_DATA] =
     {"Black", 0, 0, 0}
 };
 
+static enum E_BIG_NUMBER
+{
+    BIG_NUMBER,
+    BIG_NUMBER_NAME[32]
+}
+
+static const bigNumbers[][E_BIG_NUMBER] =
+{
+    {1000000000, "billion"},
+    {1000000, "million"},
+    {1000, "thousand"},
+    {100, "hundred"}
+};
+
+static const numberUnits[][] = 
+{
+    "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+    "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
+    "nineteen"
+};
+
+static const numberTens[][] =
+{
+    "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+};
+
 // ---
 // External
 // ---
@@ -240,4 +266,58 @@ stock HumanizeOrdinal(number, dest[], maxLength = sizeof dest)
     }
 
     return 1;
+}
+
+// HumanizeNumber transates numbers into words.
+//
+// Example :
+// 1000 -> "one thousand"
+// 1234 -> "one thousand two hundred thirty-four"
+// -1234 -> "minus one thousand two hundred thirty-four"
+//
+stock HumanizeNumber(number, dest[], maxLength = sizeof dest)
+{
+    dest[0] = EOS;
+
+    if(number == 0)
+    {
+        strcat(dest, "zero", maxLength);
+        return;
+    }
+    else if(number < 0)
+    {
+        strcat(dest, "minus ", maxLength);
+        number *= -1;
+    }
+
+    new temp[500];
+    
+    for(new i = 0; i < sizeof(bigNumbers); i++)
+    {
+        if(number >= bigNumbers[i][BIG_NUMBER])
+        {
+            HumanizeNumber(number / bigNumbers[i][BIG_NUMBER], temp);
+            format(temp, sizeof(temp), "%s %s ", temp, bigNumbers[i][BIG_NUMBER_NAME]);
+            strcat(dest, temp, maxLength);
+            
+            number %= bigNumbers[i][BIG_NUMBER];
+        }
+    }
+
+    if(number > 0)
+    {
+        if(number < 20)
+        {
+            strcat(dest, numberUnits[number], maxLength);
+        }
+        else
+        {
+            strcat(dest, numberTens[number / 10], maxLength);
+            if (number % 10 > 0)
+            {
+                format(temp, sizeof(temp), "-%s", numberUnits[number % 10]);
+                strcat(dest, temp, maxLength);
+            }
+        }
+    }
 }
