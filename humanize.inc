@@ -164,10 +164,11 @@ stock HumanizeColor(color, dest[], maxLength = sizeof dest)
 }
 #define HumanizeColour HumanizeColor
 
-// HumanizeComma takes in an integer and passes the result to dest[]
-// by reference.
+// HumanizeThousand takes in an integer and passes the result to
+// dest[] by reference.
 //
-// The result contains the number provided with commas put in.
+// The result contains the number provided with the specified
+// delimiter put in.
 //
 // Example :
 // 0 -> 0
@@ -176,7 +177,7 @@ stock HumanizeColor(color, dest[], maxLength = sizeof dest)
 // 1000000 -> 1,000,000
 // -100000 -> -100,000
 //
-stock HumanizeComma(integer, dest[], maxLength = sizeof dest)
+stock HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter = ",")
 {
     new string[14 + 1], cursor;
 
@@ -187,7 +188,7 @@ stock HumanizeComma(integer, dest[], maxLength = sizeof dest)
     {
         if(string[cursor - 1] != '-')
         {
-            strins(string, ",", cursor);
+            strins(string, delimiter, cursor);
         }
 
         cursor -= 3;
@@ -196,6 +197,8 @@ stock HumanizeComma(integer, dest[], maxLength = sizeof dest)
     dest[0] = EOS;
     strcat(dest, string, maxLength);
 }
+// Alias for backwards-compatability
+#define HumanizeComma HumanizeThousand
 
 // HumanizeOrdinal takes in a number and turns it into a rank/ordinal
 // format, then passes that over to dest by reference.
