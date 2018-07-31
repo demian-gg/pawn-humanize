@@ -44,4 +44,19 @@ main() {
         HumanizeOrdinal(i + 1, ordinal);
         printf("You got %s place!", ordinal);
     }
+
+    // ---
+    // Numbers
+    // ---
+    new number[500];
+    HumanizeNumber(0, number); // "zero"
+    print(number);
+    HumanizeNumber(1000, number); // "one thousand"
+    print(number);
+    HumanizeNumber(1234, number); // "one thousand two hundred thirty-four"
+    print(number);
+    HumanizeNumber(12345, number); // "twelve thousand three hundred forty-five"
+    print(number);
+    HumanizeNumber(-12345, number); // "minus twelve thousand three hundred forty-five"
+    print(number);
 }
