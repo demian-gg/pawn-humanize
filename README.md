@@ -39,6 +39,16 @@ HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = ",")
 HumanizeColor(color, dest[], maxLength = sizeof dest)
 ```
 
+## Numbers to words
+```
+1000 -> "one thousand"
+1234 -> "one thousand two hundred thirty-four"
+-1234 -> "minus one thousand two hundred thirty-four"
+```
+```C
+HumanizeNumber(number, dest[], maxLength = sizeof dest)
+```
+
 ## Ordinals
 ```
 0 -> 0th
