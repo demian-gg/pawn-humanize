@@ -212,17 +212,21 @@ stock HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = "
 //
 stock HumanizeOrdinal(number, dest[], maxLength = sizeof dest)
 {
-    new string[500];
-
-    valstr(string, number);
-    switch(number)
-    {
-        case 1 : strcat(string, "st");
-        case 2 : strcat(string, "nd");
-        case 3 : strcat(string, "rd");
-        default : strcat(string, "th");
-    }
-
-    dest[0] = EOS;
-    strcat(dest, string, maxLength);
+    valstr(dest, number);
+    if(number < 0) return;
+    
+    number %= 100;
+    
+    if(11 <= number <= 13)
+    	 strcat(dest,"th",maxLength);
+    else
+    {	
+	    switch(number % 10)
+	    {
+	        case 1 : strcat(dest, "st",maxLength);
+	        case 2 : strcat(dest, "nd",maxLength);
+	        case 3 : strcat(dest, "rd",maxLength);
+	        default : strcat(dest, "th",maxLength);
+	    }
+	}
 }
