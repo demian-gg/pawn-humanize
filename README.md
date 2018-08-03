@@ -43,7 +43,7 @@ HumanizeColor(color, dest[], maxLength = sizeof dest)
 ```
 1000 -> "one thousand"
 1234 -> "one thousand two hundred thirty-four"
--1234 -> "minus one thousand two hundred thirty-four"
+-1234 -> "negative one thousand two hundred thirty-four"
 ```
 ```C
 HumanizeNumber(number, dest[], maxLength = sizeof dest)
