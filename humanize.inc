@@ -273,7 +273,7 @@ stock HumanizeOrdinal(number, dest[], maxLength = sizeof dest)
 // Example :
 // 1000 -> "one thousand"
 // 1234 -> "one thousand two hundred thirty-four"
-// -1234 -> "minus one thousand two hundred thirty-four"
+// -1234 -> "negative one thousand two hundred thirty-four"
 //
 stock HumanizeNumber(number, dest[], maxLength = sizeof dest)
 {
@@ -286,7 +286,7 @@ stock HumanizeNumber(number, dest[], maxLength = sizeof dest)
     }
     else if(number < 0)
     {
-        strcat(dest, "minus ", maxLength);
+        strcat(dest, "negative ", maxLength);
         number *= -1;
     }
 
