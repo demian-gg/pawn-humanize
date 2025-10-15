@@ -43,9 +43,9 @@ sampctl package install demian-gg/pawn-humanize
 #include <humanize>
 ```
 
-# Features
+## Features
 
-## Thousands Seperators
+### Thousands Seperators
 
 ```
 0 -> 0
@@ -59,7 +59,7 @@ sampctl package install demian-gg/pawn-humanize
 HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = ",")
 ```
 
-## Colors
+### Colors
 
 ```
 0xA86420FF -> "Chocolate Brown"
@@ -71,7 +71,7 @@ HumanizeThousand(integer, dest[], maxLength = sizeof dest, delimiter[] = ",")
 HumanizeColor(color, dest[], maxLength = sizeof dest)
 ```
 
-## Numbers to words
+### Numbers to words
 
 ```
 1000 -> "one thousand"
@@ -83,7 +83,7 @@ HumanizeColor(color, dest[], maxLength = sizeof dest)
 HumanizeNumber(number, dest[], maxLength = sizeof dest)
 ```
 
-## Ordinals
+### Ordinals
 
 ```
 0 -> 0th
