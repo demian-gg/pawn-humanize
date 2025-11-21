@@ -20,6 +20,8 @@ readable.
 
 ### Installation
 
+You can install the library either manually or using Sampctl, depending on your workflow.
+
 #### Standard
 
 1\. Download the `humanize.inc` file and place it in your `includes` folder.  
@@ -44,6 +46,8 @@ sampctl package install demian-gg/pawn-humanize
 ```
 
 ### Features
+
+The following helpers format numeric and color values into human-friendly strings for use in chat, dialogs, and logs. See below for usage examples and function signatures.
 
 #### Thousands Seperators
 
@@ -97,3 +101,9 @@ etc...
 ```C
 HumanizeOrdinal(number, dest[], maxLength = sizeof dest)
 ```
+
+### License
+
+This project is licensed under the MIT License. This license reflects our commitment to keeping the software open and accessible, while giving developers maximal freedom in how they use it. The MIT License is a permissive open-source license that allows anyone to use, modify, and distribute the software, including in commercial and closed-source projects, as long as the original copyright notice and license terms are preserved.
+
+For more details, see `LICENSE.md`.
