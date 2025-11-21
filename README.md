@@ -1,9 +1,9 @@
 <picture>
   <!-- The media queries determine the image based on website theme -->
-  <source media="(prefers-color-scheme: dark)" srcset=".assets/readme_banner_white.png">
-  <source media="(prefers-color-scheme: light)" srcset=".assets/readme_banner_black.png">
-  <!-- Fallback to the black variant if no match -->
-  <img alt="Pawn Humanize Banner" src=".assets/readme_banner_black.png">
+  <source media="(prefers-color-scheme: dark)" srcset=".assets/banner/dark_mode.png">
+  <source media="(prefers-color-scheme: light)" srcset=".assets/banner/light_mode.png">
+  <!-- Fallback to light mode variant if no match -->
+  <img alt="Pawn Humanize Banner" src=".assets/banner/light_mode.png">
 </picture>
 
 ######
